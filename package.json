@@ -1,0 +1,25 @@
+{
+  "name": "twit-up",
+  "version": "1.0.0",
+  "description": "A basic social media app",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BinayT/twit-up.git"
+  },
+  "author": "Myself",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BinayT/twit-up/issues"
+  },
+  "homepage": "https://github.com/BinayT/twit-up#readme",
+  "dependencies": {
+    "apollo-server": "^2.18.2",
+    "graphql": "^15.3.0",
+    "mongoose": "^5.10.10"
+  }
+}
