@@ -8,6 +8,7 @@ import { MONGO_URI } from './config.js';
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: ({ req }) => ({ req }),
 });
 
 mongoose

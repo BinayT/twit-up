@@ -7,6 +7,7 @@ let query = {
   },
   Mutation: {
     ...UserResolvers.Mutation,
+    ...PostResolvers.Mutation,
   },
 };
 

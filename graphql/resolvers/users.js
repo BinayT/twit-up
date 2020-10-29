@@ -38,8 +38,8 @@ let query = {
 
       const match = await bcrypt.compare(password, user.password);
       if (!match) {
-        errors.general = 'Wrong Credencials';
-        throw new UserInputError('Wrong Credencials', { errors });
+        errors.general = 'Incorrect password';
+        throw new UserInputError('Incorrect password', { errors });
       }
 
       const token = generateToken(user);
