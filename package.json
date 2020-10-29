@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,12 @@
   "homepage": "https://github.com/BinayT/twit-up#readme",
   "dependencies": {
     "apollo-server": "^2.18.2",
+    "bcryptjs": "^2.4.3",
     "graphql": "^15.3.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.10"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
 }
