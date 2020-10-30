@@ -1,4 +1,5 @@
 import { AuthenticationError } from 'apollo-server';
+import { UserInputError } from 'apollo-server';
 
 import Post from '../../models/Post.js';
 import checkAuth from '../../util/check-auth.js';
@@ -31,7 +32,6 @@ let query = {
   Mutation: {
     async createPost(_, { body }, context) {
       const user = checkAuth(context);
-      console.log(user);
 
       const newPost = new Post({
         body,
@@ -40,6 +40,8 @@ let query = {
         createdAt: new Date().toISOString(),
       });
       const post = await newPost.save();
+
+      context.pubsub.publish('NEW_POST', { newPost: post });
 
       return post;
     },
@@ -58,6 +60,35 @@ let query = {
       } catch (error) {
         throw new Error(error.message);
       }
+    },
+
+    likePost: async (_, { postId }, context) => {
+      const { username } = checkAuth(context);
+
+      const post = await Post.findById(postId);
+
+      if (post) {
+        if (post.likes.find((like) => like.username === username)) {
+          // Post already liked by the user,unlikes it.
+          post.likes = post.likes.filter((like) => like.username !== username);
+        } else {
+          // Not liked, hence will like the post
+          post.likes.push({
+            username,
+            createdAt: new Date().toISOString(),
+          });
+        }
+        await post.save();
+        return post;
+      } else {
+        throw new UserInputError('Post not found');
+      }
+    },
+  },
+
+  Subscription: {
+    newPost: {
+      subscribe: (_, __, { pubsub }) => pubsub.asyncIterator('NEW_POST'),
     },
   },
 };
