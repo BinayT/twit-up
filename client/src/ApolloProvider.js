@@ -9,7 +9,8 @@ import {
 
 const cache = new InMemoryCache();
 const link = createHttpLink({
-  uri: 'http://localhost:5000/',
+  uri: 'http://localhost:5000',
+  headers: { authorization: `bearer [token]` },
 });
 
 const client = new ApolloClient({
