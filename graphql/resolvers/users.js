@@ -73,7 +73,7 @@ let query = {
       if (user) {
         throw new UserInputError('username is already taken.', {
           errors: {
-            message: `username ${username} has already been taken`,
+            message: `Username '${username}' has already been taken`,
           },
         });
       }
