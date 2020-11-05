@@ -5,7 +5,6 @@ import CommentResolvers from './comments.js';
 let query = {
   Post: {
     likeCount(parent) {
-      console.log(parent);
       return parent.likes.length;
     },
     commentCount(parent) {
