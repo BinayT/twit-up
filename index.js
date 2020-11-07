@@ -7,6 +7,8 @@ import { MONGO_URI } from './config.js';
 
 const pubsub = new PubSub();
 
+const port = process.env.PORT || 5000;
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -21,6 +23,9 @@ mongoose
   })
   .then(() => {
     console.log('MongoDB connected');
-    server.listen({ port: 5000 });
+    server.listen({ port });
   })
-  .then(() => console.log('Server Running on Port 5000'));
+  .then(() => console.log('Server Running on Port 5000'))
+  .catch((err) => {
+    console.err(err);
+  });
