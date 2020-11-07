@@ -15,7 +15,9 @@ const PostCard = ({
     <Card fluid>
       <Card.Content>
         <Image floated='right' size='mini' src='/photo.png' />
-        <Card.Header>{username}</Card.Header>
+        <Card.Header>
+          {username.charAt(0).toUpperCase() + username.slice(1)}
+        </Card.Header>
         <Card.Meta as={Link} to={`/posts/${id}`}>
           {moment(createdAt).fromNow()}
         </Card.Meta>
