@@ -55,6 +55,7 @@ const LikeButton = ({ user, likeCount, likes, id }) => {
         pointing: 'left',
         content: `${likeCount}`,
       }}
+      basic
       as={Link}
       to='/login'
     />
